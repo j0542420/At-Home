@@ -9,14 +9,14 @@ namespace At_Home
 {
     class Animal
     {
-        //properties //Attributes //fields
+        //properties //Attributes //fields  of an animal
         public string name { get; set; }
         public string skinColor { get; set; }
         public int numberOfLegs { get; set; }
         public int age { get; set; }
         public string sound { get; set; }
 
-        //default constructor: is a method has the same name of the class to build/inmitate the object // worker to build the object
+        //default constructor: is a method has the same name of the class to build/imitate the object // worker to build the object
         //assign default
         public Animal()
         {
@@ -27,7 +27,7 @@ namespace At_Home
             sound = "meouw";
         }
 
-        //custome constructor
+        //custome constructor to create an animal with specific attributes
         public Animal(string Aname, string AskinColor, int AnumberOfLegs, int Aage, string Asound)
         {
             name = Aname;
@@ -40,13 +40,14 @@ namespace At_Home
         //behavior/ action/ methods
         public void Introduce()
         {
-            Console.WriteLine($"I am {name}, I have {numberOfLegs} legs my skin color is {skinColor}");
+            Console.WriteLine($"I am {name}, I am {age} years old, I have {numberOfLegs} legs my skin color is {skinColor}");
         }
         public void MakeSound()
         {
             Console.WriteLine(name + " sounds " + sound);
         }
         // **NEW: Methods to update attributes**
+        // Working with Example 2
         public void SetName(string newName)
         {
             name = newName;
@@ -78,7 +79,7 @@ namespace At_Home
             animal1.Introduce();
             animal1.MakeSound();
 
-            Animal animal2 = new Animal("Bergie", "Brown", 4, 1, "bark sound");
+            Animal animal2 = new Animal("Bergie", "Brown", 4, 2, "bark sound");
             Console.WriteLine("This is a dog");
             animal2.Introduce();
             animal2.MakeSound();
@@ -86,6 +87,7 @@ namespace At_Home
             // Create an animal
             Animal myAnimal = new Animal("Leo", "Golden", 4, 3, "Roar");
             myAnimal.Introduce();
+            myAnimal.MakeSound();
 
             // Update properties
             //Example 2 starts
@@ -99,21 +101,30 @@ namespace At_Home
             myAnimal.Introduce();
             myAnimal.MakeSound();
 
+            //Directly updating info (different way)
             myAnimal.name = "Simba";
             myAnimal.skinColor = "Light Brown";
 
-            Animal ani;
-            List<Animal> animals = new List<Animal>();
-            for (int i = 0; i < 10; i++)
-            {
-                ani = new Animal("name" + i, "Color" + i, 4, 2, "sound" + 1);//initiate object
-                animals.Add(ani);
-            }
+            //Example 3: creating a List
+            List<Animal> animals = new List<Animal>()
+        {
+            new Animal("Charlie", "White", 4, 2, "Bark"), // Dog
+            new Animal("Whiskers", "Gray", 4, 3, "Meow"), // Cat
+            new Animal("Freddy", "Green", 4, 1, "Ribbit"), // Frog
+            new Animal("Max", "Brown", 4, 4, "Neigh"), // Horse
+            new Animal("Oscar", "Yellow", 2, 2, "Chirp"), // Bird
+            new Animal("Rocky", "Black", 4, 5, "Growl"), // Bear
+            new Animal("Daisy", "Pink", 4, 3, "Oink"), // Pig
+            new Animal("Bubbles", "Orange", 0, 1, "Blub"), // Fish
+            new Animal("Milo", "White & Black", 4, 6, "Moo"), // Cow
+            new Animal("Zara", "Golden", 4, 7, "Roar") // Lion
+        };
 
+            Console.WriteLine("\nList of Different Animals:");
             foreach (Animal a in animals)
             {
                 a.Introduce();
-
+                a.MakeSound();
             }
         }
     }
